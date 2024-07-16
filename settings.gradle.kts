@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "coursAndroidQCDA009"
 include(":app")
 include(":mod2demo1")
+include(":mod2tp1")
