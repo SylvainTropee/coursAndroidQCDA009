@@ -37,3 +37,5 @@ include(":mod5demo1")
 include(":mod5demo2")
 include(":mod5demo3")
 include(":mod5demo4")
+
+include(":mod5demo5")

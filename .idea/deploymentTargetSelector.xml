@@ -58,6 +58,9 @@
       <SelectionState runConfigName="textFieldPasswordIsWorking()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="mod5demo5">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
