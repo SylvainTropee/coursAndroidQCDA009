@@ -22,9 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.mod5demo5.ui.theme.CoursAndroidQCDA009Theme
 
 class MainActivity : ComponentActivity() {
@@ -40,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun App(){
+fun App() {
     val navHostController = rememberNavController()
     AppNavHost(navHostController = navHostController)
 }
@@ -62,7 +64,10 @@ fun ProfilPage(name: String) {
 }
 
 @Composable
-fun SignInPage(onClickToHome : () -> Unit ) {
+fun SignInPage(
+    onClickToHome: () -> Unit,
+    onClickToProfil: (String) -> Unit
+) {
 
     var text by rememberSaveable {
         mutableStateOf("")
@@ -88,7 +93,7 @@ fun SignInPage(onClickToHome : () -> Unit ) {
                 Text(text = "GO TO HOME")
             }
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { onClickToProfil(text) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 4.dp)
@@ -100,23 +105,32 @@ fun SignInPage(onClickToHome : () -> Unit ) {
 }
 
 @Composable
-fun AppNavHost(navHostController: NavHostController){
+fun AppNavHost(navHostController: NavHostController) {
 
     NavHost(
         navController = navHostController,
-        startDestination = "signIn"
-    ){
+        startDestination = SignInDestination.route
+    ) {
 
-        composable(route = "home"){
+        composable(route = HomeDestination.route) {
             HomePage()
         }
-        composable(route = "signIn"){
+        composable(route = SignInDestination.route) {
             SignInPage(onClickToHome = {
-                navHostController.navigate("home")
-            })
+                navHostController.navigate(HomeDestination.route)
+            },
+                onClickToProfil = {
+                    navHostController
+                        .navigate("${ProfileDestination.route}/$it")
+                }
+            )
         }
-        composable(route = "profil"){
-            ProfilPage(name = "")
+        composable(
+            route = ProfileDestination.routeWithArgs,
+            arguments = ProfileDestination.arguments
+        ) {
+            val name = it.arguments?.getString(ProfileDestination.nameArg) ?: ""
+            ProfilPage(name = name)
         }
 
     }
