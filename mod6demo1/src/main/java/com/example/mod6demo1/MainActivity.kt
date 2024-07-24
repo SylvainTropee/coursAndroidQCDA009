@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            CoursAndroidQCDA009Theme {
+            CoursAndroidQCDA009Theme() {
                 ColorSettingScreen()
             }
         }

@@ -37,7 +37,6 @@ include(":mod5demo1")
 include(":mod5demo2")
 include(":mod5demo3")
 include(":mod5demo4")
-
 include(":mod5demo5")
-include(":mod6sql")
 include(":mod6demo1")
+include(":mod6demo2")
