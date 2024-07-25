@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mod6demo2"
+    namespace = "com.example.mod7demo1"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.mod6demo2"
+        applicationId = "com.example.mod7demo1"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -51,13 +51,13 @@ android {
 
 dependencies {
 
-    //SQLLite permet interaction avec la base
-    val sqliteVersion = "2.4.0"
-    implementation("androidx.sqlite:sqlite-ktx:$sqliteVersion")
-    implementation("androidx.sqlite:sqlite-framework:$sqliteVersion")
-
-    //accès à la méthode viewModel()
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    //moshi
+    implementation("com.squareup.moshi:moshi:1.14.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+    //retrofit
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    //viewModel()
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
